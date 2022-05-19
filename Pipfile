@@ -24,6 +24,7 @@ urlobject = "*"
 werkzeug = "*"
 wincertstore = "*"
 pandas = "*"
+jupyterlab = "*"
 
 [dev-packages]
 
