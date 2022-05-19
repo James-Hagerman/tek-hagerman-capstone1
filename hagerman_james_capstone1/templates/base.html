@@ -13,13 +13,14 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
-      <a class="nav-item nav-link" href="{{ url_for('sales_prod') }}">Add A Product Sale</a>
-      <a class="nav-item nav-link" href="{{ url_for('sales_esp') }}">Add An ESP Sale</a>
-    </div>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{{ url_for('index') }}">Home</a>
+        <a class="nav-item nav-link" href="{{ url_for('sales_prod') }}">Add a Product Sale</a>
+        <a class="nav-item nav-link" href="{{ url_for('sales_esp') }}">Add an Warranty Sale</a>
+      </div>
+  
+  </nav>
 
-</nav>
 
     {% block content %}
 

@@ -31,7 +31,7 @@ csv_prod_info.to_sql('prod_info', con = engine, if_exists = 'append', index = Fa
 
 # Batch loading the Extended Service Plan price table 
 csv_esp_table = pd.read_csv('hagerman_james_capstone1\data\esp_price.csv')
-csv_esp_table.to_sql('esp_table', con = engine, if_exists = 'append', index = False)
+csv_esp_table.to_sql('esp_price', con = engine, if_exists = 'append', index = False)
 
 # Batch loading the employee table 
 csv_employee = pd.read_csv('hagerman_james_capstone1\data\employee.csv')

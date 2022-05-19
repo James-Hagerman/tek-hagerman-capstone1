@@ -2,16 +2,17 @@
 {% block content %}
 <div class = 'jumbotron'>
     <h1></h1>
-    <p>Add a new puppy to our database!</p>
+    <p>Add a Product Sale!</p>
     <form method = 'POST'>
         {{form.hidden_tag()}}
         {{form.employee.label}}{{form.employee}}<br>
-        {{form.date.label}}{{form.date}}<br>
+        {{form.date.label}}{{form.date(placeholder = 'MM/DD/YYYY')}}<br>
         {{form.product.label}}{{form.product}}<br>
         {{form.quantity.label}}{{form.quantity}}<br>
-        {{form.year.label}}{{form.year}}<br>
+        {{form.year.label}}{{form.year(placeholder = 'YYYY')}}<br>
         {{form.quarter.label}}{{form.quarter}}<br>
         {{form.submit()}}
+
     </form>
 </div>
 {% endblock %}
