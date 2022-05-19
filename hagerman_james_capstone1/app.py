@@ -1,6 +1,6 @@
 import os 
 import sys
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, url_for, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.schema import ForeignKeyConstraint 
 from flask_migrate import Migrate
@@ -40,7 +40,6 @@ class Prod_info(db.Model):
 
     __tablename__ = 'prod_info'
 
-    prod_id = db.Column(db.Integer, primary_key = True)
     prod_code = db.Column(db.VARCHAR(20), ForeignKey('prod_price.prod_code'), primary_key = True)
     prod_name = db.Column(db.VARCHAR(45))
     prod_manufacturer = db.Column(db.VARCHAR(256))
@@ -53,7 +52,7 @@ class Prod_info(db.Model):
 
 class Esp_table(db.Model):
 
-    __tablename__ = 'esp_table'
+    __tablename__ = 'esp_price'
 
     esp_code = db.Column(db.VARCHAR(20), primary_key = True)
     price = db.Column(db.Integer, nullable = False)
@@ -123,7 +122,7 @@ class Sales_prod(db.Model):
     
     prod_sale_id = db.Column(db.Integer, primary_key = True)
     emp_id = db.Column(db.VARCHAR(20), ForeignKey('employee.employee_id'))
-    prod_code = db.Column(db.VARCHAR(20))
+    prod_code = db.Column(db.VARCHAR(20), ForeignKey('prod_info.prod_code'))
     quantity = db.Column(db.VARCHAR(20))
     year = db.Column(db.Integer)
     quarter = db.Column(db.VARCHAR(4))
@@ -164,7 +163,7 @@ def sales_prod():
         db.session.add(new_entry)
         db.session.commit()
 
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     return render_template('prod_sales.html', form = form)
 
 @app.route('/esp_sales', methods = ['GET', 'POST'])
@@ -183,7 +182,7 @@ def sales_esp():
         db.session.add(new_entry)
         db.session.commit()
 
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     return render_template('esp_sales.html', form = form)
 
 
